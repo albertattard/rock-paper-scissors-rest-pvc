@@ -1,8 +1,8 @@
 package demo.games;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -14,13 +14,13 @@ public class GameController {
     this.service = service;
   }
 
-  @RequestMapping( "/hand" )
+  @GetMapping( "/hand" )
   public @ResponseBody HandResponse hand() {
     final Hand hand = service.random();
     return new HandResponse( hand );
   }
 
-  @RequestMapping( "/play/{player}" )
+  @GetMapping( "/play/{player}" )
   public @ResponseBody PlayResult play( final @PathVariable( "player" ) Hand player ) {
     return service.play( player );
   }

@@ -27,14 +27,13 @@ public class GameServiceTest {
   public void shouldReturnARandomHand() {
     final Hand expectedHand = Hand.ROCK;
 
-    final RandomService randomService = mock( RandomService.class );
-    when( randomService.nextInt( eq( NUMBER_OF_HANDS ) ) ).thenReturn( expectedHand.ordinal() );
+    final RandomService randomService = mockRandomService( expectedHand );
 
     final GameService service = new GameService( randomService );
     final Hand hand = service.random();
     assertSame( expectedHand, hand );
 
-    verify( randomService, times( 1 ) ).nextInt( NUMBER_OF_HANDS );
+    verifyRandomService( randomService );
   }
 
   @EnumSource( Hand.class )
@@ -56,13 +55,23 @@ public class GameServiceTest {
   }
 
   private void playAndAssert( Hand computer, Hand player, Outcome outcome ) {
-    final RandomService randomService = mock( RandomService.class );
-    when( randomService.nextInt( eq( NUMBER_OF_HANDS ) ) ).thenReturn( computer.ordinal() );
+    final RandomService randomService = mockRandomService( computer );
+
     final GameService service = new GameService( randomService );
 
     final PlayResult result = new PlayResult( computer, player, outcome );
     assertEquals( result, service.play( player ) );
 
+    verifyRandomService( randomService );
+  }
+
+  private RandomService mockRandomService( final Hand computer ) {
+    final RandomService randomService = mock( RandomService.class );
+    when( randomService.nextInt( eq( NUMBER_OF_HANDS ) ) ).thenReturn( computer.ordinal() );
+    return randomService;
+  }
+
+  private void verifyRandomService( final RandomService randomService ) {
     verify( randomService, times( 1 ) ).nextInt( NUMBER_OF_HANDS );
   }
 }

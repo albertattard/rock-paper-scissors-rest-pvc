@@ -13,12 +13,14 @@ public class GameService {
 
   public PlayResult play( final Hand player ) {
     final Hand computer = random();
-
-    final Outcome outcome = ( computer == player ? Outcome.DRAW :
-      computer.beatenBy() == player ? Outcome.PLAYER_WIN :
-        Outcome.COMPUTER_WIN );
-
+    final Outcome outcome = determineOutcome( computer, player );
     return new PlayResult( computer, player, outcome );
+  }
+
+  private Outcome determineOutcome( Hand computer, final Hand player ) {
+    return computer == player ? Outcome.DRAW :
+      computer.beatenBy() == player ? Outcome.PLAYER_WIN :
+        Outcome.COMPUTER_WIN;
   }
 
   public Hand random() {

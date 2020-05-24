@@ -31,7 +31,23 @@ public class GameApplicationTests {
       new HandResponse( Hand.SCISSORS )
     );
 
-    assertThat( this.restTemplate.getForObject( "http://localhost:" + port + "/hand", HandResponse.class ) )
+    final String url = String.format( "http://localhost:%d/hand", port );
+    assertThat( this.restTemplate.getForObject( url, HandResponse.class ) )
       .isIn( candidates );
+  }
+
+  @Test
+  @DisplayName( "should play against computer" )
+  public void shouldPlayAgainstComputer() {
+    final Hand player = Hand.ROCK;
+    final var outcomes = List.of(
+      new PlayResult( Hand.ROCK, player, Outcome.DRAW ),
+      new PlayResult( Hand.PAPER, player, Outcome.COMPUTER_WIN ),
+      new PlayResult( Hand.SCISSORS, player, Outcome.PLAYER_WIN )
+    );
+
+    final String url = String.format( "http://localhost:%d/play/%s", port, player.name() );
+    assertThat( this.restTemplate.getForObject( url, PlayResult.class ) )
+      .isIn( outcomes );
   }
 }

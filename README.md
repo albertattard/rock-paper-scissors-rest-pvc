@@ -9,6 +9,19 @@ $ curl http://localhost:8080/play/ROCK
 
 The project is created in a TDD fashion.
 
+## Technology stack
+
+1. Java 14
+1. Gradle (single project)
+1. Docker
+1. Spring
+    1. Spring framework (dependency injection)
+    1. Spring Boot
+    1. Spring Web (not reactive) and REST
+1. OpenApi (Swagger)
+1. Lombok
+1. Mockito
+
 ## Setup project
 
 This project is a continuation on another [basic project named *Rock Paper Scissors Game Spring Boot Basic REST*](https://github.com/albertattard/rock-paper-scissors-basic-rest)

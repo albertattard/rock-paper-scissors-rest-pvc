@@ -1,6 +1,6 @@
 # Rock Paper Scissors Game - Player vs. Computer
 
-A simple Rock Paper Scissors game build on Spring Boot as REST service.  This is an improved version of [the basic Rock Paper Scissors game implemention](https://github.com/albertattard/rock-paper-scissors-basic-rest).  It allows the player to play against the computer through a new endpoint.
+A simple Rock Paper Scissors game build on Spring Boot as REST service.  This is an improved version of [the basic Rock Paper Scissors game implemention](https://github.com/albertattard/rock-paper-scissors-rest-basic).  It allows the player to play against the computer through a new endpoint.
 
 ```bash
 $ curl http://localhost:8080/play/ROCK
@@ -24,12 +24,12 @@ The project is created in a TDD fashion.
 
 ## Setup project
 
-This project is a continuation on another [basic project named *Rock Paper Scissors Game Spring Boot Basic REST*](https://github.com/albertattard/rock-paper-scissors-basic-rest)
+This project is a continuation on another [basic project named *Rock Paper Scissors Game Spring Boot Basic REST*](https://github.com/albertattard/rock-paper-scissors-rest-basic)
 
 1. Clone the basic version of this project
 
     ```bash
-    $ git clone https://github.com/albertattard/rock-paper-scissors-basic-rest.git rock-paper-scissors
+    $ git clone https://github.com/albertattard/rock-paper-scissors-rest-basic.git rock-paper-scissors
     ```
 
 1. Navigate in the project's directory

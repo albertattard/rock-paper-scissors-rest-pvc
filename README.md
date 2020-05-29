@@ -1,4 +1,4 @@
-# Rock Paper Scissors
+# Rock Paper Scissors Game - Player vs. Computer
 
 A simple Rock Paper Scissors game build on Spring Boot as REST service.  This is an improved version of [the basic Rock Paper Scissors game implemention](https://github.com/albertattard/rock-paper-scissors-basic-rest).  It allows the player to play against the computer through a new endpoint.
 
